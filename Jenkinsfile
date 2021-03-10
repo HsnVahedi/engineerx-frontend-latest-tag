@@ -9,7 +9,7 @@ pipeline {
                 script {
                     withDockerRegistry([ credentialsId: "dockerhub-repo", url: "" ]) {
                         def frontendImage = docker.image("hsndocker/frontend:${params.FRONTEND_VERSION}")
-                        backendImage.push("latest")
+                        frontendImage.push("latest")
 
                         def nginxImage = docker.image("hsndocker/nginx:${params.FRONTEND_VERSION}")
                         nginxImage.push("latest")
